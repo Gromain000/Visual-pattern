@@ -2,87 +2,142 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Visual Pattern</title>
+<title>Which card comes next?</title>
 <style>
     body {
-        background-color: black;
-        color: white;
-        font-family: Arial, sans-serif;
-        text-align: center;
-        padding-top: 100px;
+        margin: 0;
+        background: #000;
+        font-family: Arial, Helvetica, sans-serif;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 40px;
     }
 
-    .container {
-        max-width: 600px;
-        margin: auto;
-    }
-
-    .question {
-        font-size: 28px;
-        margin-bottom: 40px;
-    }
-
-    .choices {
-        text-align: left;
-        display: inline-block;
-        font-size: 22px;
-    }
-
-    .choices label {
-        display: block;
-        margin: 20px 0;
-        cursor: pointer;
-    }
-
-    .proceed-btn {
-        display: none;
-        margin-top: 80px;
-        padding: 18px 80px;
-        font-size: 28px;
-        background-color: #34C759; /* Same green style */
-        color: black;
-        border: none;
-        border-radius: 12px;
-        cursor: pointer;
+    h1 {
+        font-size: 32px;
         font-weight: 600;
+        margin-bottom: 25px;
     }
 
-    .proceed-btn:hover {
-        opacity: 0.9;
+    .panel {
+        width: 900px;
+        background: #5b5b5b;
+        border-radius: 35px;
+        padding: 30px 40px;
+        display: flex;
+        gap: 50px;
+    }
+
+    .cards {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .card {
+        width: 95px;
+        height: 135px;
+        border: 2px solid #fff;
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 34px;
+        position: relative;
+    }
+
+    .card.small {
+        font-size: 26px;
+    }
+
+    .corner {
+        position: absolute;
+        font-size: 14px;
+        line-height: 1.1;
+    }
+
+    .top-left {
+        top: 6px;
+        left: 6px;
+        text-align: left;
+    }
+
+    .bottom-right {
+        bottom: 6px;
+        right: 6px;
+        transform: rotate(180deg);
+    }
+
+    .labels {
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
+        font-size: 30px;
+        padding-top: 10px;
+    }
+
+    .answers {
+        width: 900px;
+        margin-top: 40px;
+        font-size: 30px;
+    }
+
+    .answers div {
+        margin: 12px 0;
     }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="question">Which card comes next?</div>
+<h1>Which card comes next?</h1>
 
-    <div class="choices">
-        <label><input type="radio" name="answer"> A) 5♠</label>
-        <label><input type="radio" name="answer"> B) 5♥</label>
-        <label><input type="radio" name="answer"> C) 6♠</label>
+<div class="panel">
+    <!-- Left card stack -->
+    <div class="cards">
+        <div class="card">
+            <div class="corner top-left">A<br>♠</div>
+            ♠
+            <div class="corner bottom-right">A<br>♠</div>
+        </div>
+
+        <div class="card">
+            <div class="corner top-left">2<br>♠</div>
+            ♠
+            <div class="corner bottom-right">2<br>♠</div>
+        </div>
+
+        <div class="card">
+            <div class="corner top-left">3<br>♠</div>
+            ♠
+            <div class="corner bottom-right">3<br>♠</div>
+        </div>
+
+        <div class="card">
+            <div class="corner top-left">4<br>♠</div>
+            ♠ ♠
+            <div class="corner bottom-right">4<br>♠</div>
+        </div>
+
+        <div class="card small">?</div>
     </div>
 
-    <br>
-
-    <button id="proceed" class="proceed-btn">Proceed</button>
+    <!-- Right labels -->
+    <div class="labels">
+        <div>A♠</div>
+        <div>2♥</div>
+        <div>3♠</div>
+        <div>4♥</div>
+        <div>?</div>
+    </div>
 </div>
 
-<script>
-    const radios = document.querySelectorAll('input[name="answer"]');
-    const proceedBtn = document.getElementById('proceed');
-
-    radios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            proceedBtn.style.display = "inline-block";
-        });
-    });
-
-    // Optional: redirect when clicked
-    // proceedBtn.addEventListener('click', () => {
-    //     window.location.href = "nextpage.html";
-    // });
-</script>
+<div class="answers">
+    <div>A) 5♠</div>
+    <div>B) 5♥</div>
+    <div>C) 6♠</div>
+</div>
 
 </body>
 </html>
